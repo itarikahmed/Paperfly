@@ -1,59 +1,40 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import {useEffect, useState} from 'react'
+import axios from 'axios'
+
 
 const Card = () => {
+const [myData,setMyData]=useState([]);
+useEffect(()=>{
+axios.get( "http://localhost:8000/books").then((res)=>setMyData(res.data));
+
+}, []);
+
   return(
-<div class="max-w-7xl mx-auto">
-	<div class="bg-white shadow-md rounded-lg max-w-xs dark:bg-gray-800 dark:border-gray-700">
-		<a href="#">
-			<img class="rounded-t-lg p-8" src="" alt="product image"/>
-        </a>
-			<div class="px-5 pb-5">
-				<a href="#">
-					<h3 class="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">Apple Watch Series 7
-						GPS, Aluminium Case, Starlight Sport</h3>
-				</a>
-				<div class="flex items-center mt-2.5 mb-5">
-					<svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-						</path>
-					</svg>
-					<svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-						</path>
-					</svg>
-					<svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-						</path>
-					</svg>
-					<svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-						</path>
-					</svg>
-					<svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-						</path>
-					</svg>
+<div className="grid grid-cols-4 gap-4">
+	
+	{myData.map((data) => {
+		const {title,author,pages,imageLink}=data;
+
+		return(
+		
+		<div class="max-w-7xl mx-auto m-4">
+		<div className="bg-white shadow-md rounded-lg max-w-xs dark:bg-gray-900 dark:border-gray-800">
+		
+				<img className="rounded-t-lg p-8 h-72 w-80" src={imageLink} alt="product image"/>
+	
+				<div className="px-5 pb-5">
+					<Link to='bookdetails'><h3 className="text-blue-900 font-semibold text-xl tracking-tight dark:text-white">{title}</h3></Link>
+					<Link className="text-blue-900 font-semibold text-base tracking-tight dark:text-white"> Author:{author}</Link>
+					<h3 className="text-3xl font-bold text-blue-900 dark:text-white mb-5">{pages}</h3> 
+					<Link className="text-white bg-[#FF8345] hover:bg-[#FF5733]  font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700">Add
+							to cart</Link>	
 				</div>
-				<div class="flex items-center justify-between">
-					<span class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
-					<a href="#"
-						class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
-						to cart</a>
-				</div>
-			</div>
-	</div>
-</div>
-);
-};
+		</div>
+	</div>)})}</div>
+	
+
+  )}
 
 export default Card;
