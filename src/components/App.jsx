@@ -4,7 +4,8 @@ import About from '../pages/About';
 import BookDetails from '../pages/BookDetails';
 import Books from '../pages/Books';
 import Home from '../pages/Home';
-
+import SignUp from '../pages/SignUp';
+import SignIn from '../pages/SignIn';
 
 const router= createBrowserRouter(createRoutesFromElements(
 <Route path='/' element={<RootLayout/>}>
@@ -13,8 +14,8 @@ const router= createBrowserRouter(createRoutesFromElements(
 <Route path='about' element={<About/>}/>
 <Route path='books' element={<Books/>}/>
 <Route path='bookdetails' element={<BookDetails/>}/>
-
-
+<Route path='signup' element={<SignUp/>}/>
+<Route path='signin' element={<SignIn/>}/>
 </Route>
  ))
 function App() {
