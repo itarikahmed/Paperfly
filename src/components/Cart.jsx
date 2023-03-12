@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-const Card = () => {
+const Cart = () => {
 const [myData,setMyData]=useState([]);
 useEffect(()=>{
 axios.get( "http://localhost:8000/books").then((res)=>setMyData(res.data));
@@ -29,4 +29,4 @@ axios.get( "http://localhost:8000/books").then((res)=>setMyData(res.data));
 </div>
 	)}
 
-export default Card;
+export default Cart;
